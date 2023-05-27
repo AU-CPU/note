@@ -1,0 +1,37 @@
+
+# 标准卷积模块
+class ConvBNReLU(nn.Sequential):
+   def __init__(self,in_channels:int, out_channels:int,kernel_size:int = 3, stride:int = 1, groups:int = 1, dilation: int = 1):
+       padding = (kernel_size -1) // 2 * dilation 
+       super(convBNRelu, self).__init__(
+           nn.Conv2d(in_channels, out_channels, kerner_size, stride, padding, groups=groups, bias=False),
+           nn.BatchNorm2d(out_channels),
+           nn.ReLU(inplace=True)
+       )
+       self.out_channels = out_channels
+ 
+Conv3×3BNReLU = ConvBNReLU
+
+
+# 深度可分离卷积模块
+class DWConvBNReLU(nn.Sequential):
+   def __init__(self, in_channels:int, out_channels:int, kernel_size:int = 3, stride:int = 1, groups:int = in_channels)
+       padding = (kernel_size -1)//2
+       super(DWConvBNReLU, self).__init(
+           nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding, groups=groups, bias=False),
+           nn.BatchNorm2d(out_channels),
+           nn.ReLU(inplace=True)
+       )
+       self.out_channels = out_channels
+DWConv3×3BNReLU = DWConvBNReLU
+
+class PWConvBNReLU(nn.Sequential):
+   def __init__(self, in_channels:int, out_channels:int, kernel_size:int = 1, stride:int = 1, groups:int = 1):
+       padding = (kernel_size - 1)//2
+       super(PWConvBNReLU, self).__init__(
+            nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding, groups=groups,bias=False),
+            nn.BatchNorm2d(out_channels),
+            nn.ReLU(inplace=True)
+       )
+       self.out_channels = out_channels
+PWConv1×1BNReLU = PWConvBNReLU
